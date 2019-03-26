@@ -1,14 +1,15 @@
 import React from 'react';
+import PersonCard from './PersonCard';
 
 const People = ({results, isFetching}) => {
   //console.log(results[0])
-  const names = results.map(person => (
-    person.name
+  const PersonCards = results.map((person, i) => (
+    <PersonCard person={person} key={i}/>
   ))
 
   return (
     <div>
-      {isFetching ? <p>loading...</p> : names}
+      {isFetching ? <p>loading...</p> : PersonCards}
     </div>
   )
 

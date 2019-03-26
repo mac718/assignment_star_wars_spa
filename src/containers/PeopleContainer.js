@@ -5,12 +5,12 @@ import {getInitialResults} from '../actions';
 
 class PeopleContainer extends Component {
   componentDidMount() {
-    this.props.getInitialResults('people/')
+    this.props.getInitialResults('https://swapi.co/api/people/')
   }
 
   render() {
     const {results, isFetching} = this.props
-    console.log(results)
+  
     return <People results={results} isFetching={isFetching} />
   }
 }

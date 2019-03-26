@@ -22,20 +22,30 @@ export function getSwapiFailure(error) {
   }
 }
 
-export function getInitialResults(path) {
+
+export function getInitialResults(url, results = []) {
   return dispatch => {
     dispatch(getSwapiRequest());
 
-    fetch('https://swapi.co/api/' + path)
+    fetch(url)
       .then(response => {
         if (!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`)
         }
-
+        
         return response.json();
       })
       .then(json => {
-        dispatch(getSwapiSuccess(json));
+        let allItems = results.concat(json.results)
+      
+        if (json.next != null) {
+          url = json.next;
+          dispatch(getInitialResults(url, allItems))
+        }
+        return allItems;
+      })
+      .then(data => {
+        dispatch(getSwapiSuccess(data));
       })
       .catch(error => {
         dispatch(getSwapiFailure(error));
