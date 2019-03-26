@@ -1,6 +1,7 @@
 export const GET_SWAPI_REQUEST = 'GET_SWAPI_REQUEST';
 export const GET_SWAPI_SUCCESS = 'GET_SWAPI_SUCCESS';
 export const GET_SWAPI_FAILURE = 'GET_SWAPI_FAILURE';
+export const ON_PAGE_CLICK = 'ON_PAGE_CLICK';
 
 export function getSwapiRequest() {
   return {
@@ -19,6 +20,13 @@ export function getSwapiFailure(error) {
   return {
     type: GET_SWAPI_FAILURE,
     error
+  }
+}
+
+export function onPageClick(page) {
+  return {
+    type: ON_PAGE_CLICK,
+    page,
   }
 }
 

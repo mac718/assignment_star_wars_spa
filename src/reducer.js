@@ -4,6 +4,7 @@ const initialState = {
   results: [],
   isFetching: false,
   error: null,
+  currentPage: 1
 }
 
 export function swapi(state = initialState, action) {
@@ -23,6 +24,11 @@ export function swapi(state = initialState, action) {
       return {
         ...state,
         error: action.error
+      }
+    case Actions.ON_PAGE_CLICK:
+      return{
+        ...state,
+        currentPage: action.page
       }
     default: 
       return state

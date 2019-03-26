@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import People from '../components/People';
-import {getInitialResults} from '../actions';
+import {getInitialResults, onPageClick} from '../actions';
 
 class PeopleContainer extends Component {
   componentDidMount() {
@@ -9,9 +9,9 @@ class PeopleContainer extends Component {
   }
 
   render() {
-    const {results, isFetching} = this.props
+    const {results, isFetching, currentPage, onPageClick} = this.props
   
-    return <People results={results} isFetching={isFetching} />
+    return <People results={results} isFetching={isFetching} currentPage={currentPage} onPageClick={onPageClick}/>
   }
 }
 
@@ -19,6 +19,7 @@ const mapStateToProps = state => {
   return {
     results: state.results,
     isFetching: state.isFetching,
+    currentPage: state.currentPage
   }
 }
 
@@ -26,6 +27,10 @@ const mapDispatchToProps = dispatch => {
   return {
     getInitialResults: (path) => {
       dispatch(getInitialResults(path))
+    },
+
+    onPageClick: (e) => {
+      dispatch(onPageClick(e.target.innerText))
     }
   }
 }
