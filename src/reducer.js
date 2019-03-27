@@ -18,6 +18,7 @@ export function swapi(state = initialState, action) {
       return {
         ...state,
         results: action.data,
+        currentPage: 1,
         isFetching: false,
       }
     case Actions.GET_SWAPI_FAILURE:

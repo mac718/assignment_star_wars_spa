@@ -7,10 +7,14 @@ import {
 } from 'react-router-dom';
 import Home from './Home';
 import PeopleContainer from '../containers/PeopleContainer';
+import PlanetsContainer from '../containers/PlanetsContainer';
 
 const NavLinks = () => {
   return (
     <div className='NavLinks'>
+      <NavLink activeClassName='active' exact to='/'>
+        Home
+      </NavLink>{'  '}
       <NavLink activeClassName='active' exact to='/people'>
         People
       </NavLink>{'  '}
@@ -36,11 +40,12 @@ const NavLinks = () => {
 const App = () => {
   return (
     <Router>
+      <NavLinks />
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/people' component={PeopleContainer} />
+        <Route exact path='/planets' component={PlanetsContainer} />
       </Switch>
-      <NavLinks />
     </Router>
   )
 }
