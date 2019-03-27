@@ -8,6 +8,7 @@ import {
 import Home from './Home';
 import PeopleContainer from '../containers/PeopleContainer';
 import PlanetsContainer from '../containers/PlanetsContainer';
+import FilmsContainer from '../containers/FilmsContainer';
 
 const NavLinks = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/people' component={PeopleContainer} />
         <Route exact path='/planets' component={PlanetsContainer} />
+        <Route exact path='/films' component={FilmsContainer} />
       </Switch>
     </Router>
   )
