@@ -9,6 +9,7 @@ import Home from './Home';
 import PeopleContainer from '../containers/PeopleContainer';
 import PlanetsContainer from '../containers/PlanetsContainer';
 import FilmsContainer from '../containers/FilmsContainer';
+import StarshipsContainer from '../containers/StarshipsContainer';
 
 const NavLinks = () => {
   return (
@@ -40,6 +41,7 @@ const NavLinks = () => {
 
 const App = () => {
   return (
+    <div className='container'>
     <Router>
       <NavLinks />
       <Switch>
@@ -47,8 +49,10 @@ const App = () => {
         <Route exact path='/people' component={PeopleContainer} />
         <Route exact path='/planets' component={PlanetsContainer} />
         <Route exact path='/films' component={FilmsContainer} />
+        <Route exact path='/starships' component={StarshipsContainer} />
       </Switch>
     </Router>
+    </div>
   )
 }
 

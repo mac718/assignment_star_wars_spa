@@ -27,8 +27,14 @@ a {
   height: 100px;
   width: 80%;
   margin: auto;
+  margin-bottom: 20px;
   background-color: #DDD;
   display: flex;
   align-items:  center;
   justify-content: center;
+}
+
+.loading {
+  text-align: center;
+  font-weight: bold;
 }

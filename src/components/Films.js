@@ -31,7 +31,8 @@ const Films = ({results, isFetching, currentPage, onPageClick}) => {
 
   return (
     <div>
-      {isFetching ? <p>loading...</p> : FilmCardPages[currentPage - 1]}
+      <h1>Films</h1>
+      {isFetching ? <p className='loading'>loading...</p> : FilmCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
     </div>
   )

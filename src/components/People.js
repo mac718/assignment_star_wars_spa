@@ -27,7 +27,8 @@ const People = ({results, isFetching, onPageClick, currentPage}) => {
 
   return (
     <div>
-      {isFetching ? <p>loading...</p> : PersonCardPages[currentPage - 1]}
+      <h1>People</h1>
+      {isFetching ? <p className='loading'>loading...</p> : PersonCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
     </div>
   )

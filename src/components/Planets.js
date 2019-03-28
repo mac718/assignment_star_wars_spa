@@ -27,7 +27,8 @@ const Planets = ({results, isFetching, currentPage, onPageClick}) => {
 
   return (
     <div>
-      {isFetching ? <p>loading...</p> : PlanetCardPages[currentPage - 1]}
+      <h1>Planets</h1>
+      {isFetching ? <p className='loading'>loading...</p> : PlanetCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
     </div>
   )
