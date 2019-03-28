@@ -13,6 +13,22 @@ code {
     monospace;
 }
 
-h1, .NavLinks {
+h1 {
   text-align: center;
+}
+
+a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: #666;
+}
+
+.NavLinks {
+  height: 100px;
+  width: 80%;
+  margin: auto;
+  background-color: #DDD;
+  display: flex;
+  align-items:  center;
+  justify-content: center;
 }

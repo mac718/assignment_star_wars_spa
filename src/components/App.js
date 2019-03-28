@@ -15,22 +15,22 @@ const NavLinks = () => {
     <div className='NavLinks'>
       <NavLink activeClassName='active' exact to='/'>
         Home
-      </NavLink>{'  '}
+      </NavLink>
       <NavLink activeClassName='active' exact to='/people'>
         People
-      </NavLink>{'  '}
+      </NavLink>
        <NavLink activeClassName='active' exact to='/films'>
         Films
-      </NavLink>{'  '}
+      </NavLink>
        <NavLink activeClassName='active' exact to='/starships'>
         Starships
-      </NavLink>{'  '}
+      </NavLink>
        <NavLink activeClassName='active' exact to='/vehicles'>
         Vehicles
-      </NavLink>{'  '}
+      </NavLink>
        <NavLink activeClassName='active' exact to='/species'>
         Species
-      </NavLink>{'  '}
+      </NavLink>
        <NavLink activeClassName='active' exact to='/planets'>
         Planets
       </NavLink>
