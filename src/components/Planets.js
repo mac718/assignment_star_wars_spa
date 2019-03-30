@@ -4,7 +4,7 @@ import PlanetCard from './PlanetCard';
 
 const Planets = ({results, isFetching, currentPage, onPageClick}) => {
   const PlanetCards = results.map((planet, i) => (
-    <PlanetCard planet={planet} key={i}/>
+    <PlanetCard planet={planet} id={i + 1} key={i}/>
   ))
 
   const PlanetCardPages = []

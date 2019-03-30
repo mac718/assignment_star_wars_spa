@@ -2,7 +2,9 @@ import * as Actions from './actions';
 
 const initialState = {
   results: [],
+  currentResource: {},
   isFetching: false,
+  isFetchingResource: false,
   error: null,
   currentPage: 1
 }
@@ -14,6 +16,11 @@ export function swapi(state = initialState, action) {
         ...state,
         isFetching: true,
       }
+    case Actions.GET_SWAPI_RESOURCE_REQUEST:
+      return {
+        ...state,
+        isFetchingResource: true,
+      }
     case Actions.GET_SWAPI_SUCCESS:
       return {
         ...state,
@@ -21,7 +28,14 @@ export function swapi(state = initialState, action) {
         currentPage: 1,
         isFetching: false,
       }
+    case Actions.GET_SWAPI_RESOURCE_SUCCESS:
+      return {
+        ...state,
+        currentResource: action.data,
+        isFetchingResource: false,
+      }
     case Actions.GET_SWAPI_FAILURE:
+    case Actions.GET_SWAPI_RESOURCE_FAILURE:
       return {
         ...state,
         error: action.error

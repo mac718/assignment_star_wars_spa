@@ -12,6 +12,7 @@ import FilmsContainer from '../containers/FilmsContainer';
 import StarshipsContainer from '../containers/StarshipsContainer';
 import VehiclesContainer from '../containers/VehiclesContainer';
 import SpeciesContainer from '../containers/SpeciesContainer';
+import ShowContainer from '../containers/ShowContainer';
 
 const NavLinks = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
         <Route exact path='/starships' component={StarshipsContainer} />
         <Route exact path='/vehicles' component={VehiclesContainer} />
         <Route exact path='/species' component={SpeciesContainer} />
+        <Route exact path='/planets/:id' component={ShowContainer} />
       </Switch>
     </Router>
     </div>
