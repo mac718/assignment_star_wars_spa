@@ -4,8 +4,8 @@ const Show = ({resource}) => {
 
   const attributes = Object.keys(resource);
   console.log(resource)
-  const details = attributes.map(attribute => (
-    <li>{attribute}: {resource[attribute]}</li>
+  const details = attributes.map((attribute, i) => (
+    <li key={i}>{attribute}: {resource[attribute]}</li>
   ))
 
   return (

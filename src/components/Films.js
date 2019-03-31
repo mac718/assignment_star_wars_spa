@@ -1,11 +1,21 @@
 import React from 'react';
 import PageLinks from './elements/PageLinks';
 import FilmCard from './FilmCard';
+import SearchContainer from '../containers/SearchContainer';
 
-const Films = ({results, isFetching, currentPage, onPageClick}) => {
-  const FilmCards = results.map((film, i) => (
-    <FilmCard film={film} key={i}/>
-  ))
+const Films = ({results, searchResults, isFetching, currentPage, onPageClick}) => {
+
+  let FilmCards;
+
+  if (searchResults == []){
+    FilmCards = results.map((film, i) => (
+      <FilmCard film={film} key={i}/>
+    ))
+  } else {
+    FilmCards = searchResults.map((film, i) => (
+      <FilmCard film={film} key={i}/>
+    ))
+  }
 
   const FilmCardPages = []
 
@@ -32,6 +42,7 @@ const Films = ({results, isFetching, currentPage, onPageClick}) => {
   return (
     <div>
       <h1>Films</h1>
+      <SearchContainer />
       {isFetching ? <p className='loading'>loading...</p> : FilmCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
     </div>

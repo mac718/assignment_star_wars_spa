@@ -2,6 +2,7 @@ import * as Actions from './actions';
 
 const initialState = {
   results: [],
+  searchResults: [],
   currentResource: {},
   isFetching: false,
   isFetchingResource: false,
@@ -25,6 +26,7 @@ export function swapi(state = initialState, action) {
       return {
         ...state,
         results: action.data,
+        searchResults: action.data,
         currentPage: 1,
         isFetching: false,
       }
@@ -44,6 +46,11 @@ export function swapi(state = initialState, action) {
       return{
         ...state,
         currentPage: action.page
+      }
+    case Actions.ON_SUBMIT:
+      return {
+        ...state,
+        searchResults: action.searchResults
       }
     default: 
       return state

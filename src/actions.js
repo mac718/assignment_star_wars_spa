@@ -5,6 +5,7 @@ export const GET_SWAPI_RESOURCE_REQUEST = 'GET_SWAPI_RESOURCE_REQUEST';
 export const GET_SWAPI_RESOURCE_SUCCESS = 'GET_SWAPI_RESOURCE_SUCCESS';
 export const GET_SWAPI_RESOURCE_FAILURE = 'GET_SWAPI_RESOURCE_FAILURE'
 export const ON_PAGE_CLICK = 'ON_PAGE_CLICK';
+export const ON_SUBMIT = 'ON_SUBMIT';
 
 export function getSwapiRequest() {
   return {
@@ -50,6 +51,13 @@ export function onPageClick(page) {
   return {
     type: ON_PAGE_CLICK,
     page,
+  }
+}
+
+export function onSubmit(searchResults) {
+  return {
+    type: ON_SUBMIT,
+    searchResults,
   }
 }
 
@@ -102,5 +110,28 @@ export function getResource(url) {
       .then(error => {
         dispatch(getSwapiResourceFailure(error));
       })
+  }
+}
+
+export function mapResultsToProps(termsArr) {
+  return (dispatch, getState) => {
+    let state = getState();
+    let searchResults = []
+    if (termsArr.length == 0) {
+      searchResults = state.results
+    } else {
+    
+      state.results.forEach(result => { 
+        for (let key in result ) {
+          termsArr.forEach(term => {
+            if (result[key].toString().includes(term)) {
+              searchResults.push(result)
+            }
+          })
+        }
+      })
+    }
+    console.log(searchResults)
+    dispatch(onSubmit(searchResults))
   }
 }

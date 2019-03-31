@@ -38,3 +38,11 @@ a {
   text-align: center;
   font-weight: bold;
 }
+
+.Search {
+  text-align: center;
+}
+
+.name {
+  list-style: none;
+}
