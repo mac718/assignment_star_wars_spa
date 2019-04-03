@@ -81,7 +81,10 @@ export function getInitialResults(url, results = []) {
           url = json.next;
           dispatch(getInitialResults(url, allItems))
         }
-        return allItems;
+        return allItems.sort((a, b) => {
+          console.log(a.url)
+          return a.url.split('/').reverse()[1] - a.url.split('/').reverse()[1]
+        })
       })
       .then(data => {
         dispatch(getSwapiSuccess(data));

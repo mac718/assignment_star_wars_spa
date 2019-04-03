@@ -4,7 +4,7 @@ import PageLinks from './elements/PageLinks';
 
 const Starships = ({results, isFetching, onPageClick, currentPage}) => {
   const StarshipCards = results.map((starship, i) => (
-    <StarshipCard starship={starship} key={i}/>
+    <StarshipCard starship={starship} id={i + 1} key={i}/>
   ))
 
   const StarshipCardPages = []
@@ -12,8 +12,12 @@ const Starships = ({results, isFetching, onPageClick, currentPage}) => {
   let page = [];
 
   StarshipCards.forEach((starshipCard, i) => {
-    if ((i == 0 || i % 10 != 0) && i < StarshipCards.length) {
+     if ((i == 0 || i % 10 != 0) && i != StarshipCards.length - 1) {
       page.push(starshipCard);
+    } else if (i == StarshipCards.length - 1) {
+      page.push(starshipCard);
+      StarshipCardPages.push(page);
+      page = []
     } else {
       StarshipCardPages.push(page);
       page = []
@@ -21,9 +25,13 @@ const Starships = ({results, isFetching, onPageClick, currentPage}) => {
     }
   })
 
+  console.log(StarshipCardPages)
 
 
-  const numberOfPages = StarshipCards.length / 10;
+
+  var numberOfPages;
+
+  StarshipCards.length % 10 == 0 ? numberOfPages = StarshipCards.length / 10 : numberOfPages = StarshipCards.length / 10 + 1
 
   return (
     <div>

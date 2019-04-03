@@ -5,7 +5,7 @@ import {getResource, onPageClick} from '../actions';
 
 class ShowContainer extends Component {
   componentDidMount() {
-    this.props.getResource(`https://swapi.co/api/planets/${this.props.id}`)
+    this.props.getResource(`https://swapi.co/api${this.props.path}/`)
   }
   render() {
     const {resource} = this.props
@@ -18,7 +18,7 @@ class ShowContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     resource: state.currentResource,
-    id: ownProps.match.params.id
+    path: ownProps.match.url,
   }
 }
 

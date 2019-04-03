@@ -4,7 +4,7 @@ import VehicleCard from './VehicleCard';
 
 const Vehicles = ({results, isFetching, currentPage, onPageClick}) => {
   const VehicleCards = results.map((vehicle, i) => (
-    <VehicleCard vehicle={vehicle} key={i}/>
+    <VehicleCard vehicle={vehicle} id={i + 1} key={i}/>
   ))
 
   const VehicleCardPages = []
@@ -12,8 +12,12 @@ const Vehicles = ({results, isFetching, currentPage, onPageClick}) => {
   let page = [];
 
   VehicleCards.forEach((vehicleCard, i) => {
-    if ((i == 0 || i % 10 != 0) && i < VehicleCards.length) {
+    if ((i == 0 || i % 10 != 0) && i != VehicleCards.length - 1) {
       page.push(vehicleCard);
+    } else if (i == VehicleCards.length - 1) {
+      page.push(vehicleCard);
+      VehicleCardPages.push(page);
+      page = []
     } else {
       VehicleCardPages.push(page);
       page = []

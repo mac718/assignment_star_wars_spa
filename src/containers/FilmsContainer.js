@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => {
 
     onPageClick: (e) => {
       dispatch(onPageClick(e.target.innerText))
-    }
+    },
   }
 }
 

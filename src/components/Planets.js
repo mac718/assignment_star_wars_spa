@@ -12,8 +12,12 @@ const Planets = ({results, isFetching, currentPage, onPageClick}) => {
   let page = [];
 
   PlanetCards.forEach((planetCard, i) => {
-    if ((i == 0 || i % 10 != 0) && i < PlanetCards.length) {
+    if ((i == 0 || i % 10 != 0) && i != PlanetCards.length - 1) {
       page.push(planetCard);
+    } else if (i == PlanetCards.length - 1) {
+      page.push(planetCard);
+      PlanetCardPages.push(page);
+      page = []
     } else {
       PlanetCardPages.push(page);
       page = []

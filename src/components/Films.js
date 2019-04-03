@@ -9,11 +9,11 @@ const Films = ({results, searchResults, isFetching, currentPage, onPageClick}) =
 
   if (searchResults == []){
     FilmCards = results.map((film, i) => (
-      <FilmCard film={film} key={i}/>
+      <FilmCard film={film} id={i + 1} key={i}/>
     ))
   } else {
     FilmCards = searchResults.map((film, i) => (
-      <FilmCard film={film} key={i}/>
+      <FilmCard film={film}  id={i + 1}key={i}/>
     ))
   }
 

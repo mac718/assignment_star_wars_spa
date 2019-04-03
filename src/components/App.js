@@ -50,12 +50,22 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/people' component={PeopleContainer} />
+        <Route exact path='/people/:id' component={ShowContainer} />
+
         <Route exact path='/planets' component={PlanetsContainer} />
-        <Route exact path='/films' component={FilmsContainer} />
-        <Route exact path='/starships' component={StarshipsContainer} />
-        <Route exact path='/vehicles' component={VehiclesContainer} />
-        <Route exact path='/species' component={SpeciesContainer} />
         <Route exact path='/planets/:id' component={ShowContainer} />
+
+        <Route exact path='/films' component={FilmsContainer} />
+        <Route exact path='/films/:id' component={ShowContainer} />
+
+        <Route exact path='/starships' component={StarshipsContainer} />
+        <Route exact path='/starships/:id' component={ShowContainer} />
+
+        <Route exact path='/vehicles' component={VehiclesContainer} />
+        <Route exact path='/vehicles/:id' component={ShowContainer} />
+
+        <Route exact path='/species' component={SpeciesContainer} />
+        <Route exact path='/species/:id' component={ShowContainer} />
       </Switch>
     </Router>
     </div>
