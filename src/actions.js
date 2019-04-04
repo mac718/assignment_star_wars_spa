@@ -83,7 +83,7 @@ export function getInitialResults(url, results = []) {
         }
         return allItems.sort((a, b) => {
           console.log(a.url)
-          return a.url.split('/').reverse()[1] - a.url.split('/').reverse()[1]
+          return parseInt(a.url.split('/').reverse()[1]) - parseInt(a.url.split('/').reverse()[1])
         })
       })
       .then(data => {
