@@ -9,15 +9,21 @@ class VehiclesContainer extends Component {
   }
 
   render() {
-    const {results, isFetching, currentPage, onPageClick} = this.props
+    const {results, searchResults, isFetching, currentPage, onPageClick} = this.props
   
-    return <Vehicles results={results} isFetching={isFetching} currentPage={currentPage} onPageClick={onPageClick}/>
+    return <Vehicles 
+      results={results} 
+      searchResults={searchResults}
+      isFetching={isFetching} 
+      currentPage={currentPage} 
+      onPageClick={onPageClick}/>
   }
 }
 
 const mapStateToProps = state => {
   return {
     results: state.results,
+    searchResults: state.searchResults,
     isFetching: state.isFetching,
     currentPage: state.currentPage
   }

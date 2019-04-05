@@ -1,11 +1,20 @@
 import React from 'react';
 import PersonCard from './PersonCard';
 import PageLinks from './elements/PageLinks';
+import SearchContainer from '../containers/SearchContainer';
 
-const People = ({results, isFetching, onPageClick, currentPage}) => {
-  const PersonCards = results.map((person, i) => (
-    <PersonCard person={person} id={i + 1} key={i}/>
-  ))
+const People = ({results, isFetching, onPageClick, currentPage, searchResults}) => {
+  let PersonCards;
+
+  if (searchResults == []){
+    PersonCards = results.map((person, i) => (
+      <PersonCard person={person} id={i + 1} key={i}/>
+    ))
+  } else {
+    PersonCards = searchResults.map((person, i) => (
+      <PersonCard person={person}  id={i + 1}key={i}/>
+    ))
+  }
 
   const PersonCardPages = []
 
@@ -25,13 +34,15 @@ const People = ({results, isFetching, onPageClick, currentPage}) => {
     }
   })
 
+  var numberOfPages;
 
-
-  const numberOfPages = Math.ceil((PersonCards.length+1) / 10) * 10
+  PersonCards.length % 10 == 0 ? 
+    numberOfPages = PersonCards.length / 10 : numberOfPages = PersonCards.length / 10 + 1
 
   return (
     <div>
       <h1>People</h1>
+      <SearchContainer />
       {isFetching ? <p className='loading'>loading...</p> : PersonCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
     </div>

@@ -35,9 +35,10 @@ const Films = ({results, searchResults, isFetching, currentPage, onPageClick}) =
     }
   })
 
+  var numberOfPages;
 
-
-  const numberOfPages = FilmCards.length / 10;
+  FilmCards.length % 10 == 0 ? 
+    numberOfPages = FilmCards.length / 10 : numberOfPages = FilmCards.length / 10 + 1
 
   return (
     <div>

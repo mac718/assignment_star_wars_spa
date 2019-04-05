@@ -1,11 +1,20 @@
 import React from 'react';
 import PageLinks from './elements/PageLinks';
 import PlanetCard from './PlanetCard';
+import SearchContainer from '../containers/SearchContainer';
 
-const Planets = ({results, isFetching, currentPage, onPageClick}) => {
-  const PlanetCards = results.map((planet, i) => (
-    <PlanetCard planet={planet} id={i + 1} key={i}/>
-  ))
+const Planets = ({results, searchResults, isFetching, currentPage, onPageClick}) => {
+  let PlanetCards;
+
+  if (searchResults == []){
+    PlanetCards = results.map((planet, i) => (
+      <PlanetCard planet={planet} id={i + 1} key={i}/>
+    ))
+  } else {
+    PlanetCards = searchResults.map((planet, i) => (
+      <PlanetCard planet={planet}  id={i + 1}key={i}/>
+    ))
+  }
 
   const PlanetCardPages = []
 
@@ -25,13 +34,15 @@ const Planets = ({results, isFetching, currentPage, onPageClick}) => {
     }
   })
 
+  var numberOfPages;
 
-
-  const numberOfPages = PlanetCards.length / 10;
+  PlanetCards.length % 10 == 0 ? 
+    numberOfPages = PlanetCards.length / 10 : numberOfPages = PlanetCards.length / 10 + 1
 
   return (
     <div>
       <h1>Planets</h1>
+      <SearchContainer />
       {isFetching ? <p className='loading'>loading...</p> : PlanetCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
     </div>
