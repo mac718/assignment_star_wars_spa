@@ -7,8 +7,8 @@ const FilmCard = ({film, id}) => {
       <div className='FilmCard card'>
         <ul className='card-body'>
           <li className='name'><h4>{film.title}</h4></li>
-          <li>Created: {film.created}</li>
-          <li>Release Date: {film.release_date}</li>
+          <li>{film.release_date}</li>
+          <li>{film.opening_crawl}</li>
         </ul>
       </div>
     </Link>

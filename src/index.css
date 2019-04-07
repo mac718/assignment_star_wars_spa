@@ -43,6 +43,10 @@ a {
   text-align: center;
 }
 
-.name {
+.card-body {
   list-style: none;
+}
+
+.FilmCard, .PersonCard, .SpeciesCard, .VehicleCard, .StarshipCard, .PlanetCard {
+  box-shadow: 5px 5px;
 }

@@ -8,16 +8,18 @@ const Films = ({results, searchResults, isFetching, currentPage, onPageClick}) =
   let FilmCards;
 
   if (searchResults == []){
-    FilmCards = results.map((film, i) => (
-      <FilmCard film={film} id={i + 1} key={i}/>
-    ))
+    FilmCards = results.map((film, i) => {
+      let id = film.url.split('/').reverse()[1];
+      return <FilmCard film={film} id={id} key={i}/>
+    })
   } else {
-    FilmCards = searchResults.map((film, i) => (
-      <FilmCard film={film}  id={i + 1}key={i}/>
-    ))
+    FilmCards = searchResults.map((film, i) => {
+      let id = film.url.split('/').reverse()[1];
+      return <FilmCard film={film} id={id} key={i}/>
+    })
   }
 
-  const FilmCardPages = []
+  let FilmCardPages = []
 
   let page = [];
 
