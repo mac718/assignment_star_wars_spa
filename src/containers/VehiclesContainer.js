@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Vehicles from '../components/Vehicles';
+import Resource from '../components/Resource';
 import {getInitialResults, onPageClick} from '../actions';
 
 class VehiclesContainer extends Component {
@@ -10,13 +10,24 @@ class VehiclesContainer extends Component {
 
   render() {
     const {results, searchResults, isFetching, currentPage, onPageClick} = this.props
-  
-    return <Vehicles 
-      results={results} 
+
+    const attributes = ['name', 'model'];
+
+    return <Resource
+      results={results}
       searchResults={searchResults}
-      isFetching={isFetching} 
-      currentPage={currentPage} 
-      onPageClick={onPageClick}/>
+      isFetching={isFetching}
+      currentPage={currentPage}
+      onPageClick={onPageClick}
+      children={attributes} 
+      resourceType='vehicles'/>
+  
+    // return <Vehicles 
+    //   results={results} 
+    //   searchResults={searchResults}
+    //   isFetching={isFetching} 
+    //   currentPage={currentPage} 
+    //   onPageClick={onPageClick}/>
   }
 }
 

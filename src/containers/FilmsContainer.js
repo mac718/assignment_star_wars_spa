@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Films from '../components/Films';
+import Resource from '../components/Resource';
 import {getInitialResults, onPageClick} from '../actions';
 
 class FilmsContainer extends Component {
@@ -10,22 +10,27 @@ class FilmsContainer extends Component {
 
   render() {
     const {results, searchResults, isFetching, currentPage, onPageClick} = this.props
-  
-    return <Films 
-      results={results} 
+
+    const attributes = ['title', 'release_date', 'opening_crawl'];
+
+    return <Resource
+      results={results}
       searchResults={searchResults}
-      isFetching={isFetching} 
-      currentPage={currentPage} 
-      onPageClick={onPageClick}/>
+      isFetching={isFetching}
+      currentPage={currentPage}
+      onPageClick={onPageClick}
+      children={attributes} 
+      resourceType='films'/>
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     results: state.results,
     searchResults: state.searchResults,
     isFetching: state.isFetching,
-    currentPage: state.currentPage
+    currentPage: state.currentPage,
+    children: ownProps.children
   }
 }
 

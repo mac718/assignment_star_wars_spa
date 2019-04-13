@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Starships from '../components/Starships';
+import Resource from '../components/Resource';
 import {getInitialResults, onPageClick} from '../actions';
 
 class StarshipsContainer extends Component {
@@ -10,13 +10,17 @@ class StarshipsContainer extends Component {
 
   render() {
     const {results, searchResults, isFetching, currentPage, onPageClick} = this.props
-  
-    return <Starships 
-      results={results} 
+
+    const attributes = ['name', 'crew', 'passengers'];
+
+    return <Resource
+      results={results}
       searchResults={searchResults}
-      isFetching={isFetching} 
-      currentPage={currentPage} 
-      onPageClick={onPageClick}/>
+      isFetching={isFetching}
+      currentPage={currentPage}
+      onPageClick={onPageClick}
+      children={attributes} 
+      resourceType='starships'/>
   }
 }
 

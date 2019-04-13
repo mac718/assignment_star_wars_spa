@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import People from '../components/People';
+import Resource from '../components/Resource';
 import {getInitialResults, onPageClick} from '../actions';
 
 class PeopleContainer extends Component {
@@ -10,13 +10,17 @@ class PeopleContainer extends Component {
 
   render() {
     const {results, searchResults, isFetching, currentPage, onPageClick} = this.props
-  
-    return <People 
+    
+    const attributes = ['name', 'birth_year', 'films'];
+
+    return <Resource
       results={results}
-      searchResults={searchResults} 
-      isFetching={isFetching} 
-      currentPage={currentPage} 
-      onPageClick={onPageClick}/>
+      searchResults={searchResults}
+      isFetching={isFetching}
+      currentPage={currentPage}
+      onPageClick={onPageClick}
+      children={attributes} 
+      resourceType='people'/>
   }
 }
 
@@ -25,7 +29,7 @@ const mapStateToProps = state => {
     results: state.results,
     searchResults: state.searchResults,
     isFetching: state.isFetching,
-    currentPage: state.currentPage
+    currentPage: state.currentPage,
   }
 }
 

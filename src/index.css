@@ -47,6 +47,6 @@ a {
   list-style: none;
 }
 
-.FilmCard, .PersonCard, .SpeciesCard, .VehicleCard, .StarshipCard, .PlanetCard {
+.FilmCard, .PersonCard, .SpeciesCard, .VehicleCard, .StarshipCard, .PlanetCard, .ResourceCard {
   box-shadow: 5px 5px;
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Planets from '../components/Planets';
+import Resource from '../components/Resource';
 import {getInitialResults, onPageClick} from '../actions';
 
 class PlanetsContainer extends Component {
@@ -10,13 +10,17 @@ class PlanetsContainer extends Component {
 
   render() {
     const {results, searchResults, isFetching, currentPage, onPageClick} = this.props
-  
-    return <Planets 
-      results={results} 
+
+    const attributes = ['name', 'climate'];
+
+    return <Resource
+      results={results}
       searchResults={searchResults}
-      isFetching={isFetching} 
-      currentPage={currentPage} 
-      onPageClick={onPageClick}/>
+      isFetching={isFetching}
+      currentPage={currentPage}
+      onPageClick={onPageClick}
+      children={attributes} 
+      resourceType='planets'/>
   }
 }
 
