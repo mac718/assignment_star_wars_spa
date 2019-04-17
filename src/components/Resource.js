@@ -42,9 +42,11 @@ const Resource = ({results, searchResults, isFetching, currentPage, onPageClick,
   ResourceCards.length % 10 == 0 ? 
     numberOfPages = ResourceCards.length / 10 : numberOfPages = ResourceCards.length / 10 + 1
 
+  var heading = resourceType.charAt(0).toUpperCase() + resourceType.slice(1);
+
   return (
     <div>
-      <h1>Films</h1>
+      <h1>{heading}</h1>
       <SearchContainer />
       {isFetching ? <p className='loading'>loading...</p> : ResourceCardPages[currentPage - 1]}
       <PageLinks numberOfPages={numberOfPages} onPageClick={onPageClick} />
